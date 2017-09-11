@@ -14,8 +14,9 @@ def add_two_numbers(first, second):
 def add_two_numbers_page(request):
     """Add two numbers"""
     if request.method == "GET":
+        form = AddTwoNumbersForm()
         template = loader.get_template("add_two_numbers/add_two_numbers.html")
-        return HttpResponse(template.render({}, request))
+        return HttpResponse(template.render({'form': form}, request))
     elif request.method == "POST":
         form = AddTwoNumbersForm(request.POST)
         if form.is_valid():
